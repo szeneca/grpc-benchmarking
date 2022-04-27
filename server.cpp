@@ -14,7 +14,11 @@ using grpc::Channel;
 using grpc::ServerContext;
 using grpc::Status;
 
-constexpr int BUFFER_SIZE = 8192;
+constexpr int TEST_ITER_COUNT = 10000;
+
+// 1024 * 32 doubles -> buffer size of 32768
+
+constexpr int BUFFER_SIZE = 32768;
 std::array<double, BUFFER_SIZE> buffer = { 0 };
 
 std::array<int, 1000> timings;
@@ -27,7 +31,7 @@ public:
     Status Stream(ServerContext* context, const StartMsg*, grpc::ServerWriter<DataMsg>* writer)
     {
         int j = 0;
-        while(j < 10000)
+        while(j < TEST_ITER_COUNT)
         {
             txStart = std::chrono::high_resolution_clock::now();
             DataMsg msg;
@@ -61,7 +65,7 @@ private:
 
 int main(int argc, char** argv)
 {
-    std::cout << "Server started" << std::endl;
+    std::cout << "Server started. Timings in (us)" << std::endl;
 
     BenchmarkServiceImpl service;
     grpc::ServerBuilder builder;

@@ -61,7 +61,7 @@ private:
 
 int main(int argc, char** argv)
 {
-    std::cout << "Client started" << std::endl;
+    std::cout << "Client started. Timings in (us)" << std::endl;
 
     BenchmarkClient client(
         grpc::CreateChannel(
