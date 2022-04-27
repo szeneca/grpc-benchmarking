@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+
+message StartMsg
+{
+}
+
+message DataMsg
+{
+}
+
+service Benchmark
+{
+    rpc Stream (StartMsg) returns (stream DataMsg) {}
+}

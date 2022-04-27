@@ -1,0 +1,8 @@
+client
+server
+grpc/*.pb.*
+.vscode/**
+*.a
+Makefile
+CMakeFiles/**
+CMakeCache.txt
