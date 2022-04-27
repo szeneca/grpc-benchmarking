@@ -10,7 +10,12 @@ message StartMsg
 message DataMsg
 {
     int32 size = 1;
-    repeated double data = 2;
+    repeated Sample samples = 2;
+}
+
+message Sample
+{
+    repeated double data = 1;
 }
 
 service Benchmark

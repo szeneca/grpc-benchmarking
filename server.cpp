@@ -35,9 +35,13 @@ public:
         {
             txStart = std::chrono::high_resolution_clock::now();
             DataMsg msg;
-            for(int i = 0; i < BUFFER_SIZE; ++i)
+            for(int i = 0; i < BUFFER_SIZE; i += 32)
             {
-                msg.add_data(buffer[i]++);
+                Sample* sample = msg.add_samples();
+                for (int k = 0; k < 32; ++k)
+                {
+                    sample->add_data(buffer[i + k]);
+                }
             }
             writer->Write(msg);
             txEnd = std::chrono::high_resolution_clock::now();
