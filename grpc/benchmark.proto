@@ -1,12 +1,16 @@
 syntax = "proto3";
 
+option cc_enable_arenas = true;
 
 message StartMsg
 {
 }
 
+// send each sample as a message?
 message DataMsg
 {
+    int32 size = 1;
+    repeated double data = 2;
 }
 
 service Benchmark

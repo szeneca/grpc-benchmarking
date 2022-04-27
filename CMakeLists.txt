@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.16)
 project(grpcBenchmark)
 
+add_compile_options("-O3")
+
 include(common.cmake)
 include_directories("/home/m/.local/include")
 
